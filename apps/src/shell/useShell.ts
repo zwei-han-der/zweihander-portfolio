@@ -14,6 +14,11 @@ export function useShell() {
     (input: string) => {
       if (!input.trim()) return;
 
+      if (input.trim() === "clear") {
+        clear();
+        return;
+      }
+
       const output = executeCommand(input, commands, {
         clear,
         openExternal: (url: string) => window.open(url, "_blank"),
