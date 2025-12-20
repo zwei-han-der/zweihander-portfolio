@@ -1,5 +1,6 @@
 import { Text } from "../components/Text";
+import { theme } from "../styles/theme";
 
 export function Prompt() {
-  return <Text color="green">$</Text>;
+  return <Text color={theme.colors.primary}>❯</Text>;
 }
