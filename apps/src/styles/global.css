@@ -1,0 +1,14 @@
+body {
+  margin: 0;
+  background: #0d1117;
+  color: #c9d1d9;
+  font-family: monospace;
+}
+
+input {
+  background: transparent;
+  border: none;
+  outline: none;
+  color: inherit;
+  font-family: inherit;
+}
