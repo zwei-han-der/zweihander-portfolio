@@ -17,16 +17,16 @@ export function Terminal() {
   }, [history]);
 
   return (
-    <div style={{ padding: "2rem" }}>
+    <div className="terminal-container">
       {showBanner && <ASCIIArt />}
-      
+
       {history.map((line, i) => (
-        <div key={i} style={{ marginBottom: "1rem" }}>
+        <div key={i} className="history-item">
           {line}
         </div>
       ))}
 
-      <div style={{ display: "flex", gap: "0.5rem", alignItems: "center" }}>
+      <div className="input-row">
         <Prompt /> <InputLine />
       </div>
     </div>

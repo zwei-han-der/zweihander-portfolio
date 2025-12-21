@@ -1,6 +1,5 @@
 import { useState, useEffect } from "react";
 import { Text } from "./Text";
-import { theme } from "../styles/theme";
 
 type Item = {
   id: string;
@@ -41,14 +40,14 @@ export function NavigableList({ items }: Props) {
     const item = items.find((i) => i.id === viewing);
     return (
       <div>
-        <Text color={theme.colors.primary}>
+        <Text color="var(--color-primary)">
           <strong>▸ {item?.name}</strong>
         </Text>
-        <div style={{ marginTop: "0.5rem", marginLeft: "1rem" }}>
+        <div className="item-details">
           <Text>{item?.details}</Text>
         </div>
-        <div style={{ marginTop: "1rem" }}>
-          <Text color={theme.colors.textDim}>Press ESC to go back</Text>
+        <div className="list-footer">
+          <Text color="var(--color-text-dim)">Press ESC to go back</Text>
         </div>
       </div>
     );
@@ -57,27 +56,20 @@ export function NavigableList({ items }: Props) {
   return (
     <div>
       {items.map((item, index) => (
-        <div key={item.id} style={{ marginBottom: "0.5rem" }}>
-          <Text color={selected === index ? theme.colors.primary : undefined}>
+        <div key={item.id} className="list-item">
+          <Text color={selected === index ? "var(--color-primary)" : undefined}>
             {selected === index ? "▸ " : "  "}
             {item.name}
           </Text>
           {selected === index && (
-            <div
-              style={{
-                marginLeft: "2rem",
-                marginTop: "0.25rem",
-                borderLeft: `2px solid ${theme.colors.border}`,
-                paddingLeft: "0.5rem",
-              }}
-            >
-              <Text color={theme.colors.textDim}>{item.preview}</Text>
+            <div className="item-preview">
+              <Text color="var(--color-text-dim)">{item.preview}</Text>
             </div>
           )}
         </div>
       ))}
-      <div style={{ marginTop: "1rem" }}>
-        <Text color={theme.colors.textDim}>
+      <div className="list-footer">
+        <Text color="var(--color-text-dim)">
           Use ↑↓ to navigate, Enter to view details
         </Text>
       </div>

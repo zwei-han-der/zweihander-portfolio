@@ -7,5 +7,5 @@ type Props = {
 };
 
 export function Text({ children, color, opacity }: Props) {
-    return <span style={{ color, opacity }}>{children}</span>
+    return <span className="text-inherit" style={{ color, opacity }}>{children}</span>
 }

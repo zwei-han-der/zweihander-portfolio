@@ -51,16 +51,20 @@ export function InputLine() {
   }, []);
 
   return (
-    <div style={{ display: "inline-flex", position: "relative" }}>
+    <div className="input-wrapper">
       <input
         value={value}
         onChange={(e) => setValue(e.target.value)}
         onKeyDown={onKeyDown}
         autoFocus
-        style={{ width: `${Math.max(value.length, 1)}ch` }}
+        style={{
+          width: `${Math.max(value.length, 1)}ch`,
+        }}
       />
       {ghost && (
-        <span style={{ position: "absolute", left: `${value.length}ch`, pointerEvents: "none" }}>
+        <span className="ghost-text" style={{
+          left: `${value.length}ch`,
+        }}>
           <Text opacity={0.4}>{ghost}</Text>
         </span>
       )}
