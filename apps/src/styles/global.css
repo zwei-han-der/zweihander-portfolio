@@ -155,7 +155,8 @@ pre {
 }
 
 .terminal-container {
-  padding: var(--spacing-lg);
+  padding: var(--spacing-md);
+  padding-top: 0;
 }
 
 .history-item {
