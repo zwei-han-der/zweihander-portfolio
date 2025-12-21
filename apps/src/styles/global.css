@@ -221,3 +221,7 @@ pre {
 .list-footer {
   margin-top: var(--spacing-md);
 }
+
+.underline {
+  text-decoration: underline;
+}
