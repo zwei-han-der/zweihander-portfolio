@@ -1,6 +1,6 @@
 import { Line } from "../components/Line";
-import { Link } from "../components/Link";
 import { Text } from "../components/Text";
+import { Tree, TreeNode } from "../components/Tree";
 import { Command } from "../shell/types";
 
 const projectsList: {
@@ -18,6 +18,21 @@ const projectsList: {
     }
   ];
 
+const projectsTree: TreeNode[] = projectsList.map((project) => ({
+  name: project.name + "\\",
+  link: project.link,
+  children: [
+    {
+      name: "description.txt",
+      description: project.description.replace(/\s+/g, " ").trim(),
+    },
+    {
+      name: "stack.json",
+      description: project.stack,
+    },
+  ],
+}));
+
 export const projects: Command = {
   name: "projects",
   description: "View my projects",
@@ -28,37 +43,7 @@ export const projects: Command = {
         <Line>
           <Text color="var(--color-primary)">projects\</Text>
         </Line>
-        {projectsList.map((project, index) => {
-          const isLast = index === projectsList.length - 1;
-          return (
-            <div key={index}>
-              <Line>
-                <Text color="var(--color-text-dim)">{isLast ? "└── " : "├── "}</Text>
-                {project.link ? (
-                  <Link href={project.link}>
-                    <Text color="var(--color-accent)" className="underline">{project.name}\</Text>
-                  </Link>
-                ) : (
-                  <Text color="var(--color-accent)">{project.name}\</Text>
-                )}
-              </Line>
-
-              <Line>
-                <Text color="var(--color-text-dim)">{isLast ? "    " : "│   "}</Text>
-                <Text color="var(--color-text-dim)">├── </Text>
-                <Text>description.txt </Text>
-                <Text color="var(--color-text-dim)">({project.description.replace(/\s+/g, " ").trim()})</Text>
-              </Line>
-
-              <Line>
-                <Text color="var(--color-text-dim)">{isLast ? "    " : "│   "}</Text>
-                <Text color="var(--color-text-dim)">└── </Text>
-                <Text>stack.json </Text>
-                <Text color="var(--color-text-dim)">({project.stack})</Text>
-              </Line>
-            </div>
-          );
-        })}
+        <Tree data={projectsTree} />
       </div>
     );
   },

@@ -1,7 +1,32 @@
-import { Card } from "../components/Card";
-import { Text } from "../components/Text";
-import { Line } from "../components/Line";
+import { Tree, TreeNode } from "../components/Tree";
 import { Command } from "../shell/types";
+import { Line } from "../components/Line";
+import { Text } from "../components/Text";
+
+const aboutTree: TreeNode[] = [
+  {
+    name: "bio.txt",
+    description: "Aspiring programmer, web dev enthusiast, learner."
+  },
+  {
+    name: "skills",
+    children: [
+      { name: "languages.md", description: "HTML, CSS, JS, TS, React" },
+      { name: "backend.md", description: "Node.js, Bun, Elysia, SQL" }
+    ]
+  },
+  {
+    name: "idioms",
+    children: [
+      { name: "pt-br.txt", description: "Native" },
+      { name: "en-us.txt", description: "Intermediate" }
+    ]
+  },
+  {
+    name: "location.json",
+    description: "Rio Grande do Sul, Brazil"
+  }
+];
 
 export const about: Command = {
   name: "about",
@@ -10,39 +35,11 @@ export const about: Command = {
     context.setPath("C:\\Users\\Zweihander\\about");
     return (
       <div>
-        <Card title="Name">
-          <Text>Gustavo <span style={{ color: "var(--color-primary)" }}>"Zweihander"</span> Ferreira</Text>
-        </Card>
-
-        <Card title="Bio">
-          <Text>
-            I am an aspiring programmer with a particular interest in web development.
-            <br />
-            Also a curious person with a strong desire to learn. Based in Rio Grande do Sul, Brazil.
-          </Text>
-        </Card>
-
-        <Card title="Skills">
-          <Line>
-            <Text color="var(--color-accent)">• </Text>
-            <Text>HTML, CSS, JavaScript, TypeScript, React</Text>
-          </Line>
-          <Line>
-            <Text color="var(--color-accent)">• </Text>
-            <Text>Node.js, Bun, Elysia, SQL</Text>
-          </Line>
-        </Card>
-
-        <Card title="Idioms">
-          <Line>
-            <Text color="var(--color-accent)">• </Text>
-            <Text>Portuguese Brazilian (Native)</Text>
-          </Line>
-          <Line>
-            <Text color="var(--color-accent)">• </Text>
-            <Text>English (Intermediate)</Text>
-          </Line>
-        </Card>
+        <br />
+        <Line>
+          <Text color="var(--color-primary)">about\</Text>
+        </Line>
+        <Tree data={aboutTree} />
       </div>
     );
   },
