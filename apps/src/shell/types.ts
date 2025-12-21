@@ -3,6 +3,7 @@ import { JSX } from "react";
 export type CommandContext = {
   clear: () => void;
   openExternal: (url: string) => void;
+  setPath: (path: string) => void;
 };
 
 export type Command = {

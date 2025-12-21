@@ -6,7 +6,8 @@ import { Command } from "../shell/types";
 export const about: Command = {
   name: "about",
   description: "About me",
-  execute() {
+  execute(_args, context) {
+    context.setPath("C:\\Users\\Zweihander\\about");
     return (
       <div>
         <Card title="Name">

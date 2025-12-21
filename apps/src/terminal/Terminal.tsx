@@ -5,7 +5,7 @@ import { InputLine } from "./InputLine";
 import { ASCIIArt } from "../components/ASCIIArt";
 
 export function Terminal() {
-  const { history } = useShellContext();
+  const { history, path } = useShellContext();
   const [showBanner, setShowBanner] = useState(true);
 
   useEffect(() => {
@@ -20,14 +20,20 @@ export function Terminal() {
     <div className="terminal-container">
       {showBanner && <ASCIIArt />}
 
-      {history.map((line, i) => (
-        <div key={i} className="history-item">
-          {line}
+      {history.map((item) => (
+        <div key={item.id} className="history-item">
+          <div className="command-row">
+            <Prompt path={item.path} />
+            <span style={{ marginLeft: "1ch" }}>{item.command}</span>
+          </div>
+          <div className="output-content">
+            {item.output}
+          </div>
         </div>
       ))}
 
       <div className="input-row">
-        <Prompt /> <InputLine />
+        <Prompt path={path} /> <InputLine />
       </div>
     </div>
   );

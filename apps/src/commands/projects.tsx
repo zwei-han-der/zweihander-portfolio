@@ -35,7 +35,8 @@ Tech Stack: Python, TensorFlow, FastAPI, React, MongoDB`,
 export const projects: Command = {
   name: "projects",
   description: "View my projects",
-  execute() {
+  execute(_args, context) {
+    context.setPath("C:\\Users\\Zweihander\\projects");
     return <NavigableList items={projectsList} />;
   },
 };
