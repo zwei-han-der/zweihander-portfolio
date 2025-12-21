@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef } from "react";
 import { useShellContext } from "../shell/ShellContext";
 import { Prompt } from "./Prompt";
 import { InputLine } from "./InputLine";
@@ -6,19 +6,17 @@ import { ASCIIArt } from "../components/ASCIIArt";
 
 export function Terminal() {
   const { history, path } = useShellContext();
-  const [showBanner, setShowBanner] = useState(true);
+  const bottomRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    if (history.length > 0) {
-      setShowBanner(false);
-    } else {
-      setShowBanner(true);
+    if (bottomRef.current) {
+      bottomRef.current.scrollIntoView({ behavior: "smooth" });
     }
   }, [history]);
 
   return (
     <div className="terminal-container">
-      {showBanner && <ASCIIArt />}
+      <ASCIIArt />
 
       {history.map((item) => (
         <div key={item.id} className="history-item">
@@ -34,6 +32,7 @@ export function Terminal() {
 
       <div className="input-row">
         <Prompt path={path} /> <InputLine />
+        <div ref={bottomRef} />
       </div>
     </div>
   );

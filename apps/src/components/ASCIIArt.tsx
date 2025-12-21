@@ -15,7 +15,7 @@ export function ASCIIArt() {
   `;
 
   return (
-    <pre className="ascii-art">
+    <pre className="ascii-art" style={{ padding: "0 0 1rem 0" }}>
       <Text color="var(--color-primary)">{art}</Text>
       <Text color="var(--color-text-dim)">
         Type 'help' to see available commands

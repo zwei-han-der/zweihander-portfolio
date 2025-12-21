@@ -17,6 +17,8 @@ export const about: Command = {
         <Card title="Bio">
           <Text>
             I am an aspiring programmer with a particular interest in web development.
+            <br />
+            Also a curious person with a strong desire to learn. Based in Rio Grande do Sul, Brazil.
           </Text>
         </Card>
 
@@ -28,6 +30,17 @@ export const about: Command = {
           <Line>
             <Text color="var(--color-accent)">• </Text>
             <Text>Node.js, Bun, Elysia, SQL</Text>
+          </Line>
+        </Card>
+
+        <Card title="Idioms">
+          <Line>
+            <Text color="var(--color-accent)">• </Text>
+            <Text>Portuguese Brazilian (Native)</Text>
+          </Line>
+          <Line>
+            <Text color="var(--color-accent)">• </Text>
+            <Text>English (Intermediate)</Text>
           </Line>
         </Card>
       </div>
