@@ -3,10 +3,10 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "build:web": "bun build apps/src/main.tsx --outdir=apps/dist --splitting --format=esm && powershell -Command \"Copy-Item apps/index.html apps/dist/index.html -Force\"",
+    "build:web": "bun build apps/src/main.tsx --outdir=apps/dist --splitting --format=esm && cp apps/index.html apps/dist/index.html",
     "dev": "bun run build:web && bun server/src/server.ts",
     "build": "bun run build:web",
-    "preview": "bun run server/src/server.ts"
+    "preview": "bun server/src/server.ts"
   },
   "dependencies": {
     "react": "^18.3.1",
