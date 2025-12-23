@@ -3,7 +3,7 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "build:web": "bun build apps/src/main.tsx --outdir=apps/dist --splitting --format=esm && cp apps/index.html apps/dist/index.html",
+    "build:web": "bun build apps/src/main.tsx --outdir=apps/dist --splitting --format=esm && cp apps/index.html apps/dist/index.html && (cp apps/src/assets/favicon.ico apps/dist/favicon.ico || true)",
     "dev": "bun run build:web && bun server/src/server.ts",
     "build": "bun run build:web",
     "preview": "bun server/src/server.ts"
